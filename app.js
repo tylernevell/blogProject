@@ -17,7 +17,6 @@ const posts = [];
 
 app.get("/", (req, res) => {
   res.render("home", {homeStarting: homeStartingContent, posts: posts});
-
 });
 
 app.get("/about", (req, res) => {
@@ -30,6 +29,15 @@ app.get("/contact", (req, res) => {
 
 app.get("/compose", (req, res) => {
   res.render("compose");
+});
+
+app.get("/posts/:postName", (req, res) => {
+
+  const requestedTitle = req.params.postName;
+
+  posts.forEach(post => {
+    if (post.title === requestedTitle) console.log("Match Found!");
+  });
 });
 
 app.post("/compose", (req, res) => {
