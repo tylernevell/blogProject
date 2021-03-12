@@ -42,7 +42,7 @@ app.get("/posts/:postName", (req, res) => {
   posts.forEach(post => {
     const storedTitle = _.lowerCase(post.title);
     if (storedTitle === requestedTitle) {
-      res.render("post", {title: post.title, postBody: post.postBody})
+      res.render("post", {title: post.title, postBody: post.postBody, htmlTitle: requestedTitle});
     }
   });
 });
